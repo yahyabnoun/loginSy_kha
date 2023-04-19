@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
-/*
+use App\Http\Controllers\AdminController;
+
+/*AdminController
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -18,16 +20,17 @@ use App\Http\Controllers\HomeController;
 //     return view('home');
 // });
 
-Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
 
-    Route::get('/admin', function () {
-        return view('admin'); })->name('dashboard');
+    Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+    Route::get('/admin', [AdminController::class, 'index'])->name('dashboard');
+    Route::get('/admin/ajuotertash', [AdminController::class, 'ajuotertash'])->name('ajuotertash');
+});
 
+Auth::routes();
 
-  });

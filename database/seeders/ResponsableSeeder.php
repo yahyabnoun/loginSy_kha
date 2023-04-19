@@ -15,7 +15,7 @@ class ResponsableSeeder extends Seeder
     public function run(): void
     {
         Responsable::factory()
-            ->count(18)
+            ->count(25)
             ->create();
     }
 }

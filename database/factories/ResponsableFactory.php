@@ -15,7 +15,7 @@ class ResponsableFactory extends Factory
      * @return array<string, mixed>
      *
      */
-    private static $order = 3;
+    // private static $order = 3;
 
 
     //  function incri(){
@@ -29,8 +29,9 @@ class ResponsableFactory extends Factory
     {
         return [
             'admin_id' => fake()->numberBetween($min = 1, $max = 2),
-            'user_id' => self::$order++,
-            'title' => now(),
+            // 'user_id' => self::$order++,
+            'user_id' => fake()->numberBetween($min = 3, $max = 20),
+            'title' => fake()->sentence($nbWords = 3, $variableNbWords = true) ,
             'description' => fake()->paragraph($nbSentences = 1, $variableNbSentences = true),
             'durée' => fake()->time($format = 'H:i:s', $max = 'now')
             // 'remember_token' => Str::random(10),
